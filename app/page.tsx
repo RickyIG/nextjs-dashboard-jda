@@ -31,7 +31,25 @@ export default function Page() {
             href="/product"
             className="flex items-center gap-5 self-start rounded-lg bg-blue-500 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-400 md:text-base"
           >
-            <span>List of Products</span> <ArrowRightIcon className="w-5 md:w-6" />
+            <span>List of Products (Platzi Store API)</span> <ArrowRightIcon className="w-5 md:w-6" />
+          </Link>
+          <Link
+            href="/list-products"
+            className="flex items-center gap-5 self-start rounded-lg bg-blue-500 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-400 md:text-base"
+          >
+            <span>List of Products (Get from Array Static)</span> <ArrowRightIcon className="w-5 md:w-6" />
+          </Link>
+          <Link
+            href="/dashboard/products-crud"
+            className="flex items-center gap-5 self-start rounded-lg bg-blue-500 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-400 md:text-base"
+          >
+            <span>Products CRUD from Dashboard (Array Static)</span> <ArrowRightIcon className="w-5 md:w-6" />
+          </Link>
+          <Link
+            href="/products"
+            className="flex items-center gap-5 self-start rounded-lg bg-blue-500 px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-blue-400 md:text-base"
+          >
+            <span>Single Page Products CRUD(Array Static)</span> <ArrowRightIcon className="w-5 md:w-6" />
           </Link>
           <Link
             href="/dashboard"
