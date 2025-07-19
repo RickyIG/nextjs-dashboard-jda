@@ -3,8 +3,8 @@
 import { use, useState } from 'react';
 import Link from 'next/link';
 
-export default function Page({ params }: { params: Promise<{ id: string }> }) {
-    const { id } = use(params);
+export default function Page({ params }: { params: { id: string } }) {
+    const { id } = params;
     const [count, setCount] = useState(0);
 
     return (
