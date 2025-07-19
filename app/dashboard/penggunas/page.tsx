@@ -4,12 +4,14 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { EditPenggunaDialog } from "@/components/user/EditPenggunaDialog";
 import { DeletePenggunaDialog } from "@/components/user/DeletePenggunaDialog";
+import { TambahPenggunaDialog } from "@/components/user/TambahPenggunaDialog"; // tambahkan ini
 
 export default function PenggunaPage() {
   const [data, setData] = useState<any[]>([]);
   const [selected, setSelected] = useState<any>(null);
   const [editOpen, setEditOpen] = useState(false);
   const [deleteOpen, setDeleteOpen] = useState(false);
+  const [createOpen, setCreateOpen] = useState(false); // baru
 
   const fetchData = async () => {
     const res = await fetch("/api/penggunas");
@@ -20,6 +22,15 @@ export default function PenggunaPage() {
   useEffect(() => {
     fetchData();
   }, []);
+
+  const handleCreate = async (newUser: any) => {
+    await fetch(`/api/penggunas`, {
+      method: "POST",
+      body: JSON.stringify(newUser),
+    });
+    setCreateOpen(false);
+    fetchData();
+  };
 
   const handleUpdate = async (updated: any) => {
     await fetch(`/api/penggunas/${selected.id}`, {
@@ -38,7 +49,11 @@ export default function PenggunaPage() {
 
   return (
     <div className="space-y-4">
-      <h1 className="text-2xl font-semibold">Manajemen Pengguna</h1>
+      <div className="flex justify-between items-center">
+        <h1 className="text-2xl font-semibold">Manajemen Pengguna</h1>
+        <Button onClick={() => setCreateOpen(true)}>+ Tambah Pengguna</Button>
+      </div>
+
       {data.map((p) => (
         <div key={p.id} className="flex justify-between p-4 border rounded-md">
           <div>
@@ -67,6 +82,12 @@ export default function PenggunaPage() {
           />
         </>
       )}
+
+      <TambahPenggunaDialog
+        open={createOpen}
+        onOpenChange={setCreateOpen}
+        onSave={handleCreate}
+      />
     </div>
   );
 }
