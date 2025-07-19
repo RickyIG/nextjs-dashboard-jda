@@ -50,7 +50,7 @@ export default function PenggunaPage() {
   return (
     <div className="space-y-4">
       <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-semibold">Manajemen Pengguna</h1>
+        <h1 className="text-2xl font-semibold">Manajemen Pengguna (With Neon Database)</h1>
         <Button onClick={() => setCreateOpen(true)}>+ Tambah Pengguna</Button>
       </div>
 

@@ -21,6 +21,7 @@ const links = [
     icon: DocumentDuplicateIcon,
   },
   { name: 'ProductsCRUDStatic', href: '/dashboard/products-crud', icon: ShoppingBagIcon },
+  { name: 'PenggunasCRUDDatabase', href: '/dashboard/penggunas', icon: UserGroupIcon },
   { name: 'Customers', href: '/dashboard/customers', icon: UserGroupIcon },
   { name: 'About', href: '/dashboard/about', icon: QuestionMarkCircleIcon },
 ];
