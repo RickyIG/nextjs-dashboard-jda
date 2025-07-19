@@ -3,8 +3,10 @@
 import { use, useState } from 'react';
 import Link from 'next/link';
 
-export default async function Page({ params }: { params: Promise<{ id: string }> }) {
-    const { id } = await params;
+// Define the props type explicitly to match Next.js expectations
+export default function Page({ params }: { params: Promise<{ id: string }> }) {
+  // Unwrap the params Promise using the `use` hook
+  const { id } = use(params);
     const [count, setCount] = useState(0);
 
     return (
