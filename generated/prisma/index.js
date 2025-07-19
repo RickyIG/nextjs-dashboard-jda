@@ -169,6 +169,10 @@ const config = {
         "fromEnvVar": null,
         "value": "windows",
         "native": true
+      },
+      {
+        "fromEnvVar": null,
+        "value": "rhel-openssl-3.0.x"
       }
     ],
     "previewFeatures": [],
@@ -195,8 +199,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel customers {\n  id        String @id @default(dbgenerated(\"uuid_generate_v4()\")) @db.Uuid\n  name      String @db.VarChar(255)\n  email     String @db.VarChar(255)\n  image_url String @db.VarChar(255)\n}\n\nmodel invoices {\n  id          String   @id @default(dbgenerated(\"uuid_generate_v4()\")) @db.Uuid\n  customer_id String   @db.Uuid\n  amount      Int\n  status      String   @db.VarChar(255)\n  date        DateTime @db.Date\n}\n\nmodel revenue {\n  month   String @unique @db.VarChar(4)\n  revenue Int\n}\n\nmodel users {\n  id       String @id @default(dbgenerated(\"uuid_generate_v4()\")) @db.Uuid\n  name     String @db.VarChar(255)\n  email    String @unique\n  password String\n}\n\nmodel pengguna {\n  id         String   @id @default(uuid())\n  nama       String\n  email      String   @unique\n  peran      String   @default(\"user\")\n  dibuat     DateTime @default(now())\n  diperbarui DateTime @updatedAt\n}\n",
-  "inlineSchemaHash": "7f3df099673fcaf022f352f593d981058870e95b6b01d7c0589f457ae40b6b84",
+  "inlineSchema": "generator client {\n  provider      = \"prisma-client-js\"\n  binaryTargets = [\"native\", \"rhel-openssl-3.0.x\"]\n  output        = \"../generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel customers {\n  id        String @id @default(dbgenerated(\"uuid_generate_v4()\")) @db.Uuid\n  name      String @db.VarChar(255)\n  email     String @db.VarChar(255)\n  image_url String @db.VarChar(255)\n}\n\nmodel invoices {\n  id          String   @id @default(dbgenerated(\"uuid_generate_v4()\")) @db.Uuid\n  customer_id String   @db.Uuid\n  amount      Int\n  status      String   @db.VarChar(255)\n  date        DateTime @db.Date\n}\n\nmodel revenue {\n  month   String @unique @db.VarChar(4)\n  revenue Int\n}\n\nmodel users {\n  id       String @id @default(dbgenerated(\"uuid_generate_v4()\")) @db.Uuid\n  name     String @db.VarChar(255)\n  email    String @unique\n  password String\n}\n\nmodel pengguna {\n  id         String   @id @default(uuid())\n  nama       String\n  email      String   @unique\n  peran      String   @default(\"user\")\n  dibuat     DateTime @default(now())\n  diperbarui DateTime @updatedAt\n}\n",
+  "inlineSchemaHash": "4f3dca8ae01cb1b90560381a70f5447169d821a1b4655e0fc02f76a19cfe10c7",
   "copyEngine": true
 }
 
@@ -237,6 +241,10 @@ Object.assign(exports, Prisma)
 // file annotations for bundling tools to include these files
 path.join(__dirname, "query_engine-windows.dll.node");
 path.join(process.cwd(), "generated/prisma/query_engine-windows.dll.node")
+
+// file annotations for bundling tools to include these files
+path.join(__dirname, "libquery_engine-rhel-openssl-3.0.x.so.node");
+path.join(process.cwd(), "generated/prisma/libquery_engine-rhel-openssl-3.0.x.so.node")
 // file annotations for bundling tools to include these files
 path.join(__dirname, "schema.prisma");
 path.join(process.cwd(), "generated/prisma/schema.prisma")
