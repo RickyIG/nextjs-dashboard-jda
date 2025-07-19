@@ -12,7 +12,8 @@ type Product = {
   images: string[];
 };
 
-export default async function ProductPage({ params }: { params: { id: string } }) {
+export default async function ProductPage(props: { params: Promise<{ id: string }> }) {
+  const params = await props.params;
   const res = await fetch(`https://api.escuelajs.co/api/v1/products/${params.id}`, {
     next: { revalidate: 60 }, // ISR: revalidate setiap 60 detik
   });

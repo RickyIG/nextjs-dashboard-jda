@@ -3,10 +3,12 @@
 import { use, useState } from 'react';
 import Link from 'next/link';
 
+type tParams = Promise<{ id: string[] }>;
+
 // Define the props type explicitly to match Next.js expectations
-export default function Page({ params }: { params: Promise<{ id: string }> }) {
+export default function Page({ params }: { params:  tParams } ){
   // Unwrap the params Promise using the `use` hook
-  const { id } = use(params);
+    const { id }: {id: string[]} = use(params) ;
     const [count, setCount] = useState(0);
 
     return (
